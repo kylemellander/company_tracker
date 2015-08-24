@@ -46,3 +46,17 @@ get ('/divisions/:id') do
   @division = Division.find(id)
   erb(:division_details)
 end
+
+post ('/divisions/:id/employees') do
+  id = params.fetch('id').to_i
+  employee_id = params.fetch('employee_id').to_i
+  f_name = params.fetch('f_name')
+  l_name = params.fetch('l_name')
+  if employee_id == 0
+    Employee.create({f_name: f_name, l_name: l_name, division_id: id})
+  else
+    Employee.find(employee_id).update({division_id: id})
+  end
+  @division = Division.find(id)
+  erb(:division_details)
+end

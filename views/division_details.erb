@@ -3,6 +3,13 @@
 <h3>Employees</h3>
 
 <form action="/divisions/<%= @division.id %>/employees" method="post">
+  <select name="employee_id">
+    <option value="0">--Select an employee to add--</option>
+    <% Employee.all.each do |employee| %>
+    <option value="<%= employee.id %>"><%= employee.full_name %></option>
+    <% end %>
+  </select>
+  OR
   <input type="text" name="f_name" placeholder="First Name">
   <input type="text" name="l_name" placeholder="Last Name">
   <button type="submit">Add Employee to <%= @division.name %></button>
@@ -10,6 +17,6 @@
 
 <ul>
   <% @division.employees.each do |employee| %>
-  <li><%= employee.name %></li>
+  <li><%= employee.full_name %></li>
   <% end %>
 </ul>
