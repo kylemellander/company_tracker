@@ -10,4 +10,11 @@ describe('/', {type: :feature}) do
     click_link("HR Manager")
     expect(page).to have_content("Divisions of Ryan's Fun Company")
   end
+
+  it('adds divisions to page') do
+    visit('/divisions')
+    fill_in("name", :with => "COOL")
+    click_button('Add Division')
+    expect(page).to have_content("COOL")
+  end
 end

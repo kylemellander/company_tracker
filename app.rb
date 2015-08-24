@@ -15,3 +15,9 @@ end
 get ('/divisions') do
   erb(:divisions)
 end
+
+post ('/divisions') do
+  name = params.fetch('name')
+  Division.create({:name => name})
+  erb(:divisions)
+end
