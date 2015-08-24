@@ -40,3 +40,9 @@ delete ('/divisions/:id') do
   Division.find(id).destroy()
   erb(:divisions)
 end
+
+get ('/divisions/:id') do
+  id = params.fetch('id').to_i
+  @division = Division.find(id)
+  erb(:division_details)
+end

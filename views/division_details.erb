@@ -1,0 +1,15 @@
+<h1><%= @division.name %></h1>
+
+<h3>Employees</h3>
+
+<form action="/divisions/<%= @division.id %>/employees" method="post">
+  <input type="text" name="f_name" placeholder="First Name">
+  <input type="text" name="l_name" placeholder="Last Name">
+  <button type="submit">Add Employee to <%= @division.name %></button>
+</form>
+
+<ul>
+  <% @division.employees.each do |employee| %>
+  <li><%= employee.name %></li>
+  <% end %>
+</ul>

@@ -1,5 +1,10 @@
 <h1>Divisions of Ryan's Fun Company</h1>
 
+<form action="/divisions" method="post">
+  <input type="text" name="name" placeholder="Division Name">
+  <button type="submit">Add Division</button>
+</form>
+
 <ul>
   <% Division.all.each do |division| %>
   <li>
@@ -10,10 +15,4 @@
     </form>
   </li>
   <% end %>
-  <li>
-    <form action="/divisions" method="post">
-      <input type="text" name="name" placeholder="Division Name">
-      <button type="submit">Add Division</button>
-    </form>
-  </li>
 </ul>
