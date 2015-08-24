@@ -17,6 +17,11 @@
 
 <ul>
   <% @division.employees.each do |employee| %>
-  <li><%= employee.full_name %></li>
+  <li><%= employee.full_name %> <a href='/employees/<%= employee.id() %>/edit'>Edit</a>
+  <form action='/divisions/<%= @division.id %>/employees/<%= employee.id() %>' method="post">
+    <input type="hidden" value="delete" name="_method">
+    <button type="submit">Delete</button>
+  </form>
+  </li>
   <% end %>
 </ul>

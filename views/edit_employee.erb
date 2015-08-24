@@ -1,0 +1,16 @@
+<form action="/employees/<%= @employee.id %>" method="post">
+  <input type="hidden" value="patch" name="_method">
+  <input type="text" name="f_name" value="<%= @employee.f_name %>">
+  <input type="text" name="l_name" value="<%= @employee.l_name %>">
+  <select name="division_id">
+    <% Division.all.each() do |division| %>
+      <option value="<%= division.id %>"<% if @employee.division_id == division.id %> selected<% end %>><%= division.name() %></option>
+    <% end %>
+  </select>
+  <select name="project_id">
+    <% Project.all.each() do |project| %>
+      <option value="<%= project.id %>"<% if @employee.project_id == project.id %> selected<% end %>><%= project.name() %></option>
+    <% end %>
+  </select>
+  <button type="submit">Submit</button>
+</form>

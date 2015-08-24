@@ -1,0 +1,28 @@
+<h1><%= @project.name %></h1>
+
+<h3>People Working on this project:</h3>
+
+<form action="/projects/<%= @project.id %>/employees" method="post">
+  <select name="employee_id">
+    <option value="0">--Select an employee to add--</option>
+    <% Employee.all.each do |employee| %>
+    <option value="<%= employee.id %>"><%= employee.full_name %></option>
+    <% end %>
+  </select>
+  OR
+  <input type="text" name="f_name" placeholder="First Name">
+  <input type="text" name="l_name" placeholder="Last Name">
+  <button type="submit">Add Employee to <%= @project.name %></button>
+</form>
+
+<ul>
+<% @project.employees.each do |employee| %>
+  <li><%= employee.full_name %>
+    <a href='/employees/<%= employee.id() %>/edit'>Edit</a>
+    <form action='/divisions/<%= @project.id %>/employees/<%= employee.id() %>' method="post">
+      <input type="hidden" value="delete" name="_method">
+      <button type="submit">Delete</button>
+    </form>
+  </li>
+<% end %>
+</ul>
