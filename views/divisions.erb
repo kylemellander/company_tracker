@@ -1,0 +1,13 @@
+<h1>Divisions of Ryan's Fun Company</h1>
+
+<ul>
+  <% Division.all.each do |division| %>
+  <li><a href="/divisions/<%= division.id %>"><%= division.name %></a> - <a href="/divisions/<%= division.id %>/edit">edit</a></li>
+  <% end %>
+  <li>
+    <form action="/divisions" method="post">
+      <input type="text" name="name" placeholder="Division Name">
+      <button type="submit">Add Division</button>
+    </form>
+  </li>
+</ul>
