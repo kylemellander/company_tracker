@@ -1,0 +1,7 @@
+development:
+  adapter: postgresql
+  database: ryans_fun_company_development
+
+test:
+  adapter: postgresql
+  database: ryans_fun_company_test
