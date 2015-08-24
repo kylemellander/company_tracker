@@ -2,7 +2,13 @@
 
 <ul>
   <% Division.all.each do |division| %>
-  <li><a href="/divisions/<%= division.id %>"><%= division.name %></a> - <a href="/divisions/<%= division.id %>/edit">edit</a> - <a href="/divisions/<%= division.id %>/edit">delete</a></li>
+  <li>
+    <a href="/divisions/<%= division.id %>"><%= division.name %></a> - <a href="/divisions/<%= division.id %>/edit">edit</a> -
+    <form action="/divisions/<%= division.id %>" method="post">
+      <input name='_method' type='hidden' value='delete'>
+      <button type="submit">Delete</button>
+    </form>
+  </li>
   <% end %>
   <li>
     <form action="/divisions" method="post">

@@ -34,3 +34,9 @@ patch ('/divisions/:id') do
   Division.find(id).update({:name => name})
   erb(:divisions)
 end
+
+delete ('/divisions/:id') do
+  id = params.fetch('id').to_i
+  Division.find(id).destroy()
+  erb(:divisions)
+end
